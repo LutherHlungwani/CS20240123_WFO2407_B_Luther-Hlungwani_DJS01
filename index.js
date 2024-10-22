@@ -42,7 +42,9 @@ const d2 = d + (velocityInMeterSec*time)/1000; //calcultes new distance
 const rf = fuel - fbr*time; //calculates remaining fuel
 const vel2 = calcNewVel({vel: velocityInMeterSec, acc, time}); //calculates new velocity based on acceleration
 
-// Pick up an error with how the function below is called and make it robust to such errors
+if (rf < 0) {
+  throw Error ('You have insufficient fuel');
+}
 
 console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
